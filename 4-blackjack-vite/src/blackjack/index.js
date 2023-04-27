@@ -1,8 +1,4 @@
-import { crearDeck } from './usecases/crear-deck'; // exportacion indepediente
-import { crearDeck as crearNuevoDeck } from './usecases/crear-deck'; // En caso de tener un funcion con el mismo nombre podemos renombrar la funcion q estamos importando con el 'as', asi es como la renombramos.
-import { pedirCarta } from './usecases/pedir-carta';
-import { valorCarta } from './usecases/valor-carta';
-
+import { crearDeck, pedirCarta, valorCarta } from './usecases';
 /**
  * 2C = Two of Clubs
  * 2D = Two of Diamonds
