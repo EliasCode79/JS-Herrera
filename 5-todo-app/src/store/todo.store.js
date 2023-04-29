@@ -16,6 +16,66 @@ const initStore = () => {
 	console.log('Initstore');
 };
 
+const loadStore = () => {
+	throw new Error('No implemented');
+};
+
+const getTodos = (filter = Filters.All) => {
+	switch (filter) {
+		case Filters.All:
+			return [...state.todos];
+		case Filters.Completed:
+			return state.todos.filter((todo) => todo.done);
+		case Filters.Pending:
+			return state.todos.filter((todo) => !todo.done);
+		default:
+			throw new Error(`Option ${filter} is no valid.`);
+	}
+};
+
+const addTodo = (description) => {
+	if (!description) throw new Error('Desripcion is required');
+	state.todos.push(new Todo(description));
+};
+
+const toggleTodo = (todoId) => {
+	state.todos = state.todos.map((todo) => {
+		if (todo.id === todoId) {
+			todo.done = !todo.done;
+		}
+		return todo;
+	});
+};
+
+const deleteTodo = (todoId) => {
+	state.todos = state.todos.filter((todo) => todo.id !== todoId);
+};
+
+const deleteCompleted = () => {
+	state.todos = state.todos.filter((todo) => todo.done);
+};
+
+/**
+ *
+ * @param {Filters} newFilter
+ */
+const setFilter = (newFilter = Filters.All) => {
+	Object.keys(Filters).includes(newFilter); // validacion si existen ese nuevo filter.
+	state.filter = newFilter;
+};
+
+const getCurrentFilter = () => {
+	return state.filter;
+};
+
 export default {
+	addTodo,
 	initStore,
+	loadStore,
+	deleteCompleted,
+	deleteTodo,
+	getTodos,
+	getCurrentFilter,
+	setFilter,
+	toggleTodo,
 };
