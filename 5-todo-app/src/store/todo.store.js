@@ -53,6 +53,11 @@ const toggleTodo = (todoId) => {
 	});
 };
 
+/**
+ *
+ * @param {string} todoId el id del todo en string
+ */
+
 const deleteTodo = (todoId) => {
 	state.todos = state.todos.filter((todo) => todo.id !== todoId);
 };

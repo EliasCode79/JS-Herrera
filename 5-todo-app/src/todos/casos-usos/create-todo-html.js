@@ -8,7 +8,7 @@ export const createTodoHTML = (todo) => {
 	if (!todo) throw new Error('A TODO object is required');
 	const { id, done, description } = todo;
 	const html = `	<div class="view">
-											<input class="toggle" type="checkbox" ${done ? checked : ''}>
+											<input class="toggle" type="checkbox" ${done ? 'checked' : ''}>
 											<label>${description}</label>
 											<button class="destroy"></button>
 									</div>
